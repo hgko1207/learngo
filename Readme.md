@@ -2,12 +2,12 @@
 
 ## 시작
 
-- cd github.com/hgko1207
-- mkdir learngo
-- cd learngo
-- go mod init github.com/hgko1207/learngo
+- 1. cd github.com/hgko1207
+- 2. mkdir learngo
+- 3. cd learngo
+- 4. go mod init github.com/hgko1207/learngo
 
-## 정보
+## 코딩
 
 - main.go 는 컴파일을 위한 파일이다.
 - function -> func
