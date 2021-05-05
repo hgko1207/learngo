@@ -1,6 +1,6 @@
 // Functions part One
 
-package theoty
+package example
 
 import (
 	"fmt"
