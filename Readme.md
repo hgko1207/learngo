@@ -46,6 +46,11 @@ func lenAndUpper(name string) (length int, uppercase string) {
 	uppercase = strings.ToUpper(name)
 	return
 }
+
+// Go가 내부적으로 호출하는 method를 사용하는 방법
+func (a Account) String() string {
+    return fmt.Sprint(a.Owner(), "'s account.\nHas: ", a.Balance())
+}
 ```
 
 # 참고
