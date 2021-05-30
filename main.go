@@ -3,17 +3,16 @@ package main
 import (
 	"fmt"
 
-	"github.com/hgko1207/learngo/accounts"
+	"github.com/hgko1207/learngo/mydict"
 )
 
 
 func main() {
-	account := accounts.NewAccount("hgko")
-	account.Deposit(10)
-	err := account.Withdraw(20)
+	dictionary := mydict.Dictionary{"first": "First word"}
+	definition, err := dictionary.Search("first")
 	if err != nil {
 		fmt.Println(err)
+	} else {
+		fmt.Println(definition)
 	}
-	fmt.Println(account.Balance(), account.Owner())
-	fmt.Println(account)
 }

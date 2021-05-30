@@ -4,6 +4,8 @@
 
 ## 시작
 
+https://go.dev/ 페이지에서 Go 를 다운로드 합니다. 다운로드 완료 시 설치파일을 실행하여 설치합니다. 그리고 폴더를 아래와 같이 생성합니다.
+
 1. mkdir github.com/hgko1207
 2. cd github.com/hgko1207
 3. mkdir learngo
@@ -15,6 +17,7 @@
 - main.go 는 컴파일을 위한 파일
 - function -> func
 - export 함수를 만들 경우 함수명 맨 앞에 대문자로 작성
+- nil -> null을 뜻함
 
 ## 상수와 변수
 
