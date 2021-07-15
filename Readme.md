@@ -71,7 +71,29 @@ results["hello"] = "Hello"
 
 ## Goroutines
 
-Goroutines이란 기본적으로 다른 함수와 동시에 실행시키는 함수
+Goroutines이란 기본적으로 다른 함수와 동시에 실행시키는 함수이다.
+Goroutines는 프로그램이 작동하는 동안(메인함수가 실행하는 동안)만 유효하다. 
+
+```go
+// 함수 앞에 go를 붙인다.
+main() {
+    go count()
+    count()
+}
+
+func count() {
+    for i := 0; i < 10; i++ {
+		fmt.Println(i)
+		time.Sleep(time.Second)
+	}
+}
+
+// 이 경우는 main함수가 바로 종료되기 때문에 동작하지 않는다.
+main() {
+    go count()
+    go count()
+}
+```
 
 ## 에러
 
