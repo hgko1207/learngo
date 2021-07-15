@@ -56,6 +56,36 @@ func (a Account) String() string {
 }
 ```
 
+## Map 사용
+
+```go
+// empty map을 초기화하고 싶을때
+// map 끝에 중괄호({})를 작성하여 초기화 해야 함
+var results = map[string]string{}
+
+// 또는 make 사용
+var results = make(map[string]string)
+
+results["hello"] = "Hello"
+```
+
+## Goroutines
+
+Goroutines이란 기본적으로 다른 함수와 동시에 실행시키는 함수
+
+## 에러
+
+errors.New() 를 사용하여 에러를 정의하고 호출한다.
+
+```go
+var err = errors.New("error content")
+```
+
+## 라이브러리
+
+- go lang std library
+- https://golang.org/pkg/
+
 # 참고
 
 - https://golang.org/
