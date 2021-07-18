@@ -37,6 +37,15 @@ func main() {
 }
 ```
 
+## For 문
+
+```go
+people := [2]string{"hgko", "haeun"}
+for _, person := range people {
+    fmt.Println(person);
+}
+```
+
 ## 함수
 
 ```go
@@ -56,6 +65,14 @@ func (a Account) String() string {
 }
 ```
 
+## 배열 선언
+
+```go
+func main() {
+    data := [2]string{"test1", "test2"}
+}
+```
+
 ## Map 사용
 
 ```go
@@ -71,8 +88,8 @@ results["hello"] = "Hello"
 
 ## Goroutines
 
-Goroutines이란 기본적으로 다른 함수와 동시에 실행시키는 함수이다.
-Goroutines는 프로그램이 작동하는 동안(메인함수가 실행하는 동안)만 유효하다. 
+- Goroutines이란 기본적으로 다른 함수와 동시에 실행시키는 함수이다.
+- Goroutines는 프로그램이 작동하는 동안(메인함수가 실행하는 동안)만 유효하다. 
 
 ```go
 // 함수 앞에 go를 붙인다.
@@ -95,19 +112,43 @@ main() {
 }
 ```
 
-## 에러
+## Channels
 
-errors.New() 를 사용하여 에러를 정의하고 호출한다.
+- Channel은 Goroutines이랑 메인함수 사이에 정보를 전달하기 위한 방법이다.
+- 채널로부터 뭔가를 받을 때 메인 함수가 어떤 결과가 올때까지 기다린다.
+
+```go
+func main() {
+    c := make(chan bool)
+    go channelTest(c)
+    result := <- c
+	fmt.Println(result)
+}
+
+func channelTest(c chan bool) {
+    time.Sleep(time.Second * 5)
+    c <- true
+}
+```
+
+
+## Error
+
+- errors.New() 를 사용하여 에러를 정의하고 호출한다.
 
 ```go
 var err = errors.New("error content")
+
+func main() {
+    fmt.PrintLn(errTest())
+}
+
+func errTest() error {
+    return err
+}
 ```
-
-## 라이브러리
-
-- go lang std library
-- https://golang.org/pkg/
 
 # 참고
 
+- [go lang std library](https://golang.org/pkg/)
 - https://golang.org/
