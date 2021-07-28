@@ -89,7 +89,7 @@ results["hello"] = "Hello"
 ## Goroutines
 
 - Goroutines이란 기본적으로 다른 함수와 동시에 실행시키는 함수이다.
-- Goroutines는 프로그램이 작동하는 동안(메인함수가 실행하는 동안)만 유효하다. 
+- Goroutines는 프로그램이 작동하는 동안(메인함수가 실행하는 동안)만 유효하다.
 
 ```go
 // 함수 앞에 go를 붙인다.
@@ -116,6 +116,8 @@ main() {
 
 - Channel은 Goroutines이랑 메인함수 사이에 정보를 전달하기 위한 방법이다.
 - 채널로부터 뭔가를 받을 때 메인 함수가 어떤 결과가 올때까지 기다린다.
+- 채널의 타입은 `chan` 이다.
+- 채널은 데이터를 받을 순 없고 보낼 수만 있도록 작성할 수 있다.(send-only)
 
 ```go
 func main() {
@@ -129,8 +131,12 @@ func channelTest(c chan bool) {
     time.Sleep(time.Second * 5)
     c <- true
 }
-```
 
+// send-only
+func sendOnlyTest(c chan<- bool) {
+    c <- true
+}
+```
 
 ## Error
 
@@ -146,6 +152,17 @@ func main() {
 func errTest() error {
     return err
 }
+```
+
+## goquery
+
+HTML을 navigate하고 필요한 걸 HTML에서 찾아내기 위해서 사용
+JQuery 와 유사한 go를 위한 라이브러리
+
+- https://github.com/PuerkitoBio/goquery
+
+```bash
+$ go get github.com/PuerkitoBio/goquery
 ```
 
 # 참고

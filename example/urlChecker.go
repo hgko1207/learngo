@@ -1,19 +1,16 @@
-package main
+package example
 
 import (
-	"errors"
 	"fmt"
 	"net/http"
 )
-
-var errRequestFaild = errors.New("Request Faild")
 
 type requestResult struct {
 	url string
 	status string
 }
 
-func main() {
+func urlChecker() {
 	results := make(map[string]string)
 	c := make(chan requestResult)
 	urls := []string{
