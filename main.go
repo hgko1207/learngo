@@ -1,54 +1,63 @@
 package main
 
 import (
-	"errors"
 	"fmt"
+	"log"
 	"net/http"
+	"strconv"
+
+	"github.com/PuerkitoBio/goquery"
 )
 
-var errRequestFaild = errors.New("Request Faild")
 
-type requestResult struct {
-	url string
-	status string
-}
+var baseURL string = "https://kr.indeed.com/jobs?q=python&limit=50"
 
 func main() {
-	results := make(map[string]string)
-	c := make(chan requestResult)
-	urls := []string{
-		"https://www.airbnb.com/",
-		"https://www.google.com/",
-		"https://www.amazon.com/",
-		"https://www.reddit.com/",
-		"https://soundcloud.com/",
-		"https://www.facebook.com/",
-		"https://www.instagram.com/",
-		"https://academy.nomadcoders.co/",
-	}
+	totalPages := getPages()
+	fmt.Println(totalPages)
 
-	for _, url := range urls {
-		go hitURL(url, c)
-	}
-	
-	for i := 0; i < len(urls); i++ {
-		result := <-c
-		results[result.url] = result.status
-	}
-
-	for url, status := range results {
-		fmt.Println(url, status)
+	for i := 0; i < totalPages; i++ {
+		getPage(i)
 	}
 }
 
-// 이 채널은 데이터를 받을 순 없고 보낼 수만 있도록 작성
-// c chan<- requestResult
-// <- 할 시 <-c 이 채널은 보내기만 가능
-func hitURL(url string, c chan<- requestResult) {
-	resp, err := http.Get(url)
-	status := "OK"
-	if err != nil || resp.StatusCode >= 400 {
-		status = "FAILED"
+func getPage(page int) {
+	pageURL := baseURL + "&start=" + strconv.Itoa(page * 50)
+	fmt.Println("Requesting", pageURL);
+}
+
+func getPages() int {
+	pages := 0
+	res, err := http.Get(baseURL)
+	checkErr(err)
+	checkCode(res)
+
+	// 메모리 새어나가는 것을 막을 수 있다.
+	defer res.Body.Close()
+
+	doc, err := goquery.NewDocumentFromReader(res.Body)
+	checkErr(err)
+
+	doc.Find(".pagination").Each(func(i int, s *goquery.Selection) {
+		// For each item found, get the title
+		//title := s.Find("a").Text()
+		//fmt.Printf("Review %d: %s\n", i, title)
+		pages = s.Find("a").Length()
+	})
+	
+	fmt.Println(doc)
+
+	return pages
+}
+
+func checkErr(err error) {
+	if err != nil {
+		log.Fatalln(err)
 	}
-	c <- requestResult{url: url, status: status}
+}
+
+func checkCode(res *http.Response) {
+	if res.StatusCode != 200 {
+		log.Fatalln("Request failed with Status:", res.StatusCode)
+	}
 }

@@ -156,12 +156,12 @@ func errTest() error {
 
 ## goquery
 
-HTML을 navigate하고 필요한 걸 HTML에서 찾아내기 위해서 사용
-JQuery 와 유사한 go를 위한 라이브러리
-
-- https://github.com/PuerkitoBio/goquery
+- HTML을 navigate하고 필요한 걸 HTML에서 찾아내기 위해서 사용
+- JQuery 와 유사한 go를 위한 라이브러리
+- 참고 : https://github.com/PuerkitoBio/goquery
 
 ```bash
+# 설치
 $ go get github.com/PuerkitoBio/goquery
 ```
 
