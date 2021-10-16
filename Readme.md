@@ -154,6 +154,14 @@ func errTest() error {
 }
 ```
 
+## 사용 라이브러리
+
+```go
+strings.Join()
+strings.Fields()
+strings.TrimSpace()
+```
+
 ## goquery
 
 - HTML을 navigate하고 필요한 걸 HTML에서 찾아내기 위해서 사용
@@ -169,3 +177,4 @@ $ go get github.com/PuerkitoBio/goquery
 
 - [go lang std library](https://golang.org/pkg/)
 - https://golang.org/
+- [Online CSV Editor and Viewer](http://convertcsv.com/csv-viewer-editor.htm)
