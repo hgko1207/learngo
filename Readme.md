@@ -173,6 +173,10 @@ strings.TrimSpace()
 $ go get github.com/PuerkitoBio/goquery
 ```
 
+# 설치
+
+- go get github.com/labstack/echo/v4
+
 # 참고
 
 - [go lang std library](https://golang.org/pkg/)
