@@ -173,9 +173,63 @@ strings.TrimSpace()
 $ go get github.com/PuerkitoBio/goquery
 ```
 
-# 설치
+## Echo
 
-- go get github.com/labstack/echo/v4
+설치
+
+```bash
+go get github.com/labstack/echo
+```
+
+echo 에 url 을 설정 할 수 있다.
+아래 코드를 실행하고 http://localhost:1323 로 접속을 하게 되면 `Hello World!` 텍스트가 보인다.
+
+```go
+package main
+
+import (
+	"net/http"
+
+	"github.com/labstack/echo"
+)
+
+func handleHome(c echo.Context) error {
+	return c.String(http.StatusOK, "Hello, World!")
+}
+
+func main() {
+	e := echo.New()
+	e.GET("/", handleHome)
+	e.Logger.Fatal(e.Start(":1323"))
+}
+```
+
+문자열 대신에 html 파일을 생성하여 html template을 전달 할 수 있다.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Go Home</title>
+  </head>
+  <body>
+    <h1>Go Home</h1>
+  </body>
+</html>
+```
+
+home.html 파일을 생성하고 위의 코드를 복사한다. 그리고 `handleHome` 함수를 수정한다.
+
+```go
+func handleHome(c echo.Context) error {
+	return c.File("home.html")
+}
+```
+
+서버를 실행하면 Go Home 텍스트가 보인다.
 
 # 참고
 
