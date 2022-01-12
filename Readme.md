@@ -140,7 +140,7 @@ func sendOnlyTest(c chan<- bool) {
 
 ## Error
 
-- errors.New() 를 사용하여 에러를 정의하고 호출한다.
+- errors.New() 를 사용하여 에러를 정의하고 호출합니다.
 
 ```go
 var err = errors.New("error content")
@@ -164,8 +164,8 @@ strings.TrimSpace()
 
 ## goquery
 
-- HTML을 navigate하고 필요한 걸 HTML에서 찾아내기 위해서 사용
-- JQuery 와 유사한 go를 위한 라이브러리
+- HTML을 navigate하고 필요한 걸 HTML에서 찾아내기 위해서 사용합니다.
+- JQuery 와 유사한 go를 위한 라이브러리입니다.
 - 참고 : https://github.com/PuerkitoBio/goquery
 
 ```bash
@@ -181,8 +181,8 @@ $ go get github.com/PuerkitoBio/goquery
 go get github.com/labstack/echo
 ```
 
-echo 에 url 을 설정 할 수 있다.
-아래 코드를 실행하고 http://localhost:1323 로 접속을 하게 되면 `Hello World!` 텍스트가 보인다.
+echo 에 url 을 설정 할 수 있습니다.
+아래 코드를 실행하고 http://localhost:1323 로 접속을 하게 되면 `Hello World!` 텍스트가 보입니다.
 
 ```go
 package main
