@@ -204,7 +204,7 @@ func main() {
 }
 ```
 
-문자열 대신에 html 파일을 생성하여 html template을 전달 할 수 있다.
+문자열 대신에 html 파일을 생성하여 html template을 전달 할 수 있습니다.
 
 ```html
 <!DOCTYPE html>
@@ -221,7 +221,7 @@ func main() {
 </html>
 ```
 
-home.html 파일을 생성하고 위의 코드를 복사한다. 그리고 `handleHome` 함수를 수정한다.
+home.html 파일을 생성하고 위의 코드를 복사합니다. 그리고 `handleHome` 함수를 수정합니다.
 
 ```go
 func handleHome(c echo.Context) error {
@@ -229,7 +229,7 @@ func handleHome(c echo.Context) error {
 }
 ```
 
-서버를 실행하면 Go Home 텍스트가 보인다.
+서버를 실행하면 Go Home 텍스트가 보다.
 
 # 참고
 
